@@ -13,7 +13,7 @@ bundle
 
 librarian-puppet install
 
-echo "modulepath = /etc/puppet/modules:/etc/puppet/mirebalais-modules" > puppet.conf
+echo "modulepath = /etc/puppet/modules:/etc/puppet/pih-modules" > puppet.conf
 
 # puppet apply -v --detailed-exitcodes --logdest=console --logdest=syslog manifests/site.pp
 puppet apply -v \

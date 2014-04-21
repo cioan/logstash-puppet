@@ -1,5 +1,13 @@
 #! /bin/bash
 
+if [ -z "$1" ]
+then
+  echo "You need to provide the environment to install in:"
+  echo "./install.sh ENVIRONMENT"
+  echo "ENVIRONMENT can be local|test|malawitest|zanmi"
+  exit 1
+fi
+
 apt-get update
 
 # hack to make sure we have ruby1.9 installed instead of ruby1.8
@@ -14,6 +22,7 @@ bundle
 librarian-puppet install
 
 echo "modulepath = /etc/puppet/modules:/etc/puppet/pih-modules" > puppet.conf
+echo "environment = $1" >> puppet.conf
 
 # puppet apply -v --detailed-exitcodes --logdest=console --logdest=syslog manifests/site.pp
 puppet apply -v \

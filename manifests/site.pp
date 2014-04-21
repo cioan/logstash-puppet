@@ -6,6 +6,10 @@ node default {
   }
 
   include wget
-  include java
-  include logging
+  # include java
+  # include logging
+}
+
+node 'env_test' inherits default {
+	notify {"env_test node"}
 }

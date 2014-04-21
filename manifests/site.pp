@@ -11,5 +11,11 @@ node default {
 }
 
 node 'env_test' inherits default {
-	notify {"env_test node"}
+	notify {"env_test node":}
+	file {'testfile':
+	  path    => '/tmp/testfile_env',
+	  ensure  => present,
+	  mode    => 0640,
+	  content => "I'm a test environmet.",
+	}
 }

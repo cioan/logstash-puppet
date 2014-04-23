@@ -23,6 +23,8 @@ class mailx (
 
   	file { '/etc/msmtprc':
 	    ensure  => file,
+    	group   => mail,
+    	mode    => '0660',
 	    content => template('mailx/msmtprc.erb'),
 	    require => Package['msmtp']
     }

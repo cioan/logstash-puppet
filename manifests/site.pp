@@ -6,7 +6,7 @@ node default {
   }
 
   include wget
-  # include java
-  # include logging
+  include java
+  include logging
   include mailx
 }

@@ -1,6 +1,6 @@
 class mailx (
 	$smtp_username = hiera('smtp_username'),
-	$smtp_password = hiera('smtp_userpassword'),
+	$smtp_userpassword = hiera('smtp_userpassword'),
 	){
 	
 	package { 'msmtp':

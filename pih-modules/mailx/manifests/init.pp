@@ -14,6 +14,10 @@ class mailx (
 	package { 'bsd-mailx':
 		ensure => installed,
 	}
+	
+	package { 'msmtp-mta':
+		ensure => installed,
+	}
 
 	exec { 'msmtp info':
 	    command     => 'msmtp --serverinfo --host=smtp.gmail.com --tls=on --tls-certcheck=off',
@@ -26,6 +30,13 @@ class mailx (
     	group   => mail,
     	mode    => '0660',
 	    content => template('mailx/msmtprc.erb'),
+	    require => Package['msmtp']
+    }
+
+    file { '/var/log/msmtp.log':
+	    ensure  => file,
+    	group   => mail,
+    	mode    => '0660',
 	    require => Package['msmtp']
     }
 

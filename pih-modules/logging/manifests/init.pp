@@ -1,4 +1,6 @@
-class logging {
+class logging (
+  $email_alerts_to = hiera('email_alerts_to'),
+  ){
 
   file { '/etc/logstash/conf.d/logstash.conf':
     ensure  => file,

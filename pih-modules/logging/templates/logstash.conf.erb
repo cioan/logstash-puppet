@@ -55,7 +55,7 @@ output {
   body => "%{@message}"
   match => ["error", "event_type,ERROR"]
   subject => "Found ERROR on %{@source_host}"
-  to => "cioan@pih.org"
+  to => "<%= @email_alerts_to %>"
   via => "sendmail"
   type => "tomcat"
  }

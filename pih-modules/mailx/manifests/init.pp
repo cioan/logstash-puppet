@@ -1,4 +1,7 @@
-class mailx {
+class mailx (
+	$smtp_username = hiera('smtp_username'),
+	$smtp_password = hiera('smtp_userpassword'),
+	){
 	
 	package { 'msmtp':
 		ensure => installed,
@@ -17,4 +20,11 @@ class mailx {
 	    user		=> 'root',
 	    subscribe   => [ Package['msmtp'], Package['mailutils'], Package['bsd-mailx'] ]
   	}
+
+  	file { '/etc/msmtprc':
+	    ensure  => file,
+	    content => template('mailx/msmtprc.erb'),
+	    require => Package['msmtp']
+    }
+
 }

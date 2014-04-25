@@ -1,4 +1,4 @@
-sitename: common
+sitename: lacolline
 smtp_username: '[EMAIL_ADDRESS]'
 smtp_userpassword: '[EMAIL_PASSWORD]'
 email_alerts_to: '[SEND_TO_EMAIL_ADDRESS]'
